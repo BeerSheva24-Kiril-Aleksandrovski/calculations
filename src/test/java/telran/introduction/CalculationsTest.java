@@ -20,7 +20,9 @@ public class CalculationsTest {
     void divideTest () {
         assertEquals(1, divide(2, 2));
         assertEquals(0, divide(2, 3));
-        assertEquals(-6, divide(12, -2));
+        assertEquals(Integer.MAX_VALUE, divide(12, 0));
+        assertEquals(Integer.MIN_VALUE, divide(-12, 0));
+        assertEquals(0, divide(0, 0));
     }
 @Test 
     void subtractTest () {
@@ -48,13 +50,11 @@ public class CalculationsTest {
      
 @Test 
     void isDividedOnTest () {
-        assertEquals(true, isDividedOn (22, 11));
-        assertEquals(false, isDividedOn (22, 10));
-        assertEquals(false, isDividedOn (22, 0));
-        assertEquals(true, isDividedOn (22, -11));
-        assertEquals(true, isDividedOn (-22, -11));
-
-
-
+        assertTrue(isDividedOn (22, 11));
+        assertFalse(isDividedOn (22, 10));
+        assertFalse(isDividedOn (22, 0));
+        assertTrue(isDividedOn (22, -11));
+        assertTrue(isDividedOn (-22, -11));
+        assertFalse(isDividedOn (0, 0));
     }
 }
